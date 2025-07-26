@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "canisters": {
+    "health_records_backend": {
+      "type": "rust",
+      "package": "health-records-backend",
+      "candid": "health_records.did"
+    },
+    "internet_identity": {
+      "type": "pull",
+      "id": "rdmx6-jaaaa-aaaaa-aaadq-cai"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:4943",
+      "type": "ephemeral"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+type HealthRecord = record {
+  id: text;
+  title: text;
+  record_type: text;
+  date: nat64;
+  encrypted_url: text;
+  file_size: opt nat64;
+  created_at: nat64;
+};
+
+type AddRecordRequest = record {
+  title: text;
+  record_type: text;
+  encrypted_url: text;
+  file_size: opt nat64;
+};
+
+type ApiResponse = record {
+  success: bool;
+  message: text;
+  data: opt vec HealthRecord;
+};
+
+service : {
+  // Record management functions
+  add_record: (AddRecordRequest) -> (ApiResponse);
+  get_my_records: () -> (ApiResponse) query;
+  get_record_by_id: (text) -> (ApiResponse) query;
+  delete_record: (text) -> (ApiResponse);
+  get_record_count: () -> (nat64) query;
+  
+  // Utility functions
+  health_check: () -> (text) query;
+  whoami: () -> (principal) query;
+}
